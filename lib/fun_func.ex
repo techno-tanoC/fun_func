@@ -1,0 +1,2 @@
+defmodule FunFunc do
+end
