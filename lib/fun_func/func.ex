@@ -3,8 +3,9 @@ defmodule FunFunc.Func do
   """
 
   @doc ~S"""
-  Identity function.
+  Identity function. It always returns the argument.
 
+  ## Example
       iex> FunFunc.Func.id().(1)
       1
   """
@@ -12,8 +13,9 @@ defmodule FunFunc.Func do
   def id(), do: fn x -> x end
 
   @doc ~S"""
-  Constant function.
+  Constant function. It returns the first argument.
 
+  ## Example
       iex> FunFunc.Func.const(1).(2)
       1
   """
@@ -21,11 +23,75 @@ defmodule FunFunc.Func do
   def const(x), do: fn _ -> x end
 
   @doc ~S"""
-  Return function.
+  Ignore function. It returns the second argument.
 
+  ## Example
+      iex> FunFunc.Func.ignore(1).(2)
+      2
+  """
+  @spec ignore(any) :: fun
+  def ignore(x)
+  def ignore(_), do: fn x -> x end
+
+  @doc ~S"""
+  Return function. It returns the argument on the call.
+
+  ## Example
       iex> FunFunc.Func.return(1).()
       1
   """
   @spec return(any) :: fun
   def return(x), do: fn -> x end
+
+
+  @doc ~S"""
+  Composition function.
+
+  ## Example
+      iex> FunFunc.Func.compose(&String.to_integer/1, &Integer.to_string/1).(1)
+      1
+  """
+  @spec compose(fun, fun) :: fun
+  def compose(f, g), do: fn x -> f.(g.(x)) end
+
+  @doc ~S"""
+  Curry function.
+
+  ## Example
+      iex> FunFunc.Func.curry(&(&1 + &2)).(1).(2)
+      3
+      iex> FunFunc.Func.curry(&(&1 + &2 + &3)).(1).(2).(3)
+      6
+  """
+  def curry(f) do
+    {_, arity} = :erlang.fun_info(f, :arity)
+    do_curry(f, arity, [])
+  end
+
+  @doc false
+  defp do_curry(f, 0, args), do: apply(f, Enum.reverse(args))
+  defp do_curry(f, arity, args) do
+    fn arg -> do_curry(f, arity - 1, [arg | args]) end
+  end
+
+  @doc ~S"""
+  Applys args to the curried function.
+
+  ## Example
+      iex> f = fn a -> fn b -> fn c -> a + b + c end end end
+      iex> FunFunc.Func.apply_args(f, [1, 2, 3])
+      6
+  """
+  def apply_args(f, args) do
+    Enum.reduce(args, f, &(&2).(&1))
+  end
+
+  @doc ~S"""
+  Flip function.
+
+  ## Example
+      iex> FunFunc.Func.flip(&-/2).(1, 2)
+      1
+  """
+  def flip(f), do: fn a, b -> f.(b, a) end
 end
