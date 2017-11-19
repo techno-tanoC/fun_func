@@ -63,6 +63,7 @@ defmodule FunFunc.Func do
       iex> FunFunc.Func.curry(&(&1 + &2 + &3)).(1).(2).(3)
       6
   """
+  @spec curry(fun) :: fun
   def curry(f) do
     {_, arity} = :erlang.fun_info(f, :arity)
     do_curry(f, arity, [])
@@ -82,6 +83,7 @@ defmodule FunFunc.Func do
       iex> FunFunc.Func.apply_args(f, [1, 2, 3])
       6
   """
+  @spec apply_args(fun, list) :: any
   def apply_args(f, args) do
     Enum.reduce(args, f, &(&2).(&1))
   end
@@ -93,5 +95,6 @@ defmodule FunFunc.Func do
       iex> FunFunc.Func.flip(&-/2).(1, 2)
       1
   """
+  @spec flip(fun) :: fun
   def flip(f), do: fn a, b -> f.(b, a) end
 end
