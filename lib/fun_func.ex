@@ -1,5 +1,21 @@
 defmodule FunFunc do
   @moduledoc ~S"""
+
+  ## Sample
+
+  ```
+  use FunFunc
+  Agent.start_link(return(1), name: __MODULE__)
+  Agent.cast(__MODULE__, const(2))
+  Agent.get(__MODULE__, id())
+  ```
+
+  when `use FunFunc`, It means:
+
+  ```
+  import FunFunc
+  alias FunFunc.{Func, Result}
+  ```
   """
 
   @doc ~S"""
@@ -41,6 +57,7 @@ defmodule FunFunc do
   defmacro __using(_opts) do
     quote do
       import FunFunc
+      alias FunFunc.{Func, Result}
     end
   end
 end
