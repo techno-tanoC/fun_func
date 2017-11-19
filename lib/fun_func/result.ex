@@ -1,8 +1,11 @@
 defmodule FunFunc.Result do
   @moduledoc ~S"""
+  Functions for result values.
+  The result value is `{:ok, x}` or `{:error, x}`.
   """
 
-  @type result :: {any, any}
+  @type result :: {atom, any}
+  @type results :: [result]
 
   @doc ~S"""
   Creates a ok value.
@@ -11,6 +14,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.ok(1)
       {:ok, 1}
   """
+  @spec ok(any) :: result
   def ok(x), do: {:ok, x}
 
   @doc ~S"""
@@ -20,6 +24,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.error(1)
       {:error, 1}
   """
+  @spec error(any) :: result
   def error(x), do: {:error, x}
 
   @doc ~S"""
@@ -33,6 +38,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.ok?(1)
       false
   """
+  @spec ok?(any) :: boolean
   def ok?(result)
   def ok?({:ok, _}), do: true
   def ok?(_), do: false
@@ -48,6 +54,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.error?(1)
       false
   """
+  @spec error?(any) :: boolean
   def error?(result)
   def error?({:error, _}), do: true
   def error?(_), do: false
@@ -63,6 +70,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.result?(1)
       false
   """
+  @spec result?(any) :: boolean
   def result?(result)
   def result?({:ok, _}), do: true
   def result?({:error, _}), do: true
@@ -79,6 +87,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.map(1, &Integer.to_string/1)
       1
   """
+  @spec map(result, fun) :: result
   def map(result, f)
   def map({:ok, x}, f), do: {:ok, f.(x)}
   def map({:error, _} = result, _), do: result
@@ -95,6 +104,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.flat_map(1, &{:ok, &1 + 1})
       1
   """
+  @spec flat_map(result, fun) :: result
   def flat_map(result, f)
   def flat_map({:ok, x}, f), do: f.(x)
   def flat_map({:error, _} = result, _), do: result
@@ -111,6 +121,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.map_error(1, &Integer.to_string/1)
       1
   """
+  @spec map_error(result, fun) :: result
   def map_error(result, f)
   def map_error({:ok, _} = result, _), do: result
   def map_error({:error, x}, f), do: {:error, f.(x)}
@@ -127,6 +138,7 @@ defmodule FunFunc.Result do
       iex> FunFunc.Result.flat_map_error(1, &{:ok, &1 + 1})
       1
   """
+  @spec flat_map_error(result, fun) :: result
   def flat_map_error(result, f)
   def flat_map_error({:ok, _} = result, _), do: result
   def flat_map_error({:error, x}, f), do: f.(x)
@@ -143,6 +155,7 @@ defmodule FunFunc.Result do
   iex> FunFunc.Result.join(1, &Integer.to_string/1, &Atom.to_string/1)
   1
   """
+  @spec join(result, fun, fun) :: any
   def join(result, f, g)
   def join({:ok, x}, f, _), do: f.(x)
   def join({:error, x}, _, g), do: g.(x)
@@ -154,6 +167,7 @@ defmodule FunFunc.Result do
   iex> FunFunc.Result.collect_oks([{:ok, 1}, {:error, 2}, 3])
   [1]
   """
+  @spec collect_oks(results) :: list
   def collect_oks(results) do
     results
     |> Enum.filter(&ok?/1)
@@ -166,6 +180,7 @@ defmodule FunFunc.Result do
   iex> FunFunc.Result.collect_errors([{:ok, 1}, {:error, 2}, 3])
   [2]
   """
+  @spec collect_errors(results) :: list
   def collect_errors(results) do
     results
     |> Enum.filter(&error?/1)
@@ -178,6 +193,7 @@ defmodule FunFunc.Result do
   iex> FunFunc.Result.split([{:ok, 1}, {:error, 2}, 3])
   {[1], [2]}
   """
+  @spec split(results) :: {list, list}
   def split(results) do
     {oks, errors} = Enum.split_with(results, &ok?/1)
     {collect_oks(oks), collect_errors(errors)}
