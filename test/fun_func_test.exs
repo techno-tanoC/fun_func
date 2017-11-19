@@ -3,4 +3,5 @@ defmodule FunFuncTest do
 
   doctest FunFunc
   doctest FunFunc.Func
+  doctest FunFunc.Result
 end
