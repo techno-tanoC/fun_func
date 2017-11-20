@@ -6,19 +6,29 @@ defmodule FunFunc.Mixfile do
       app: :fun_func,
       version: "0.1.0",
       elixir: "~> 1.5",
+      name: "FunFunc",
+      description: "Fun Functions for general purpose.",
+      package: package(),
+      build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+  def package do
+    [
+      maintainers: ["techno-tanoC"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/techno-tanoC/fun_func"},
+    ]
+  end
+
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:ex_doc, "~> 0.14", only: :dev},
