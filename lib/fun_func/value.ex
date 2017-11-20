@@ -1,5 +1,6 @@
 defmodule FunFunc.Value do
   @moduledoc ~S"""
+  Functions inspired by Ruby's ActiveSupport.
   """
 
   @doc ~S"""
