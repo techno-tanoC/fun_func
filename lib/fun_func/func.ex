@@ -6,7 +6,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Identity function. It always returns the argument.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.id().(1)
       1
   """
@@ -16,7 +16,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Constant function. It returns the first argument.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.const(1).(2)
       1
   """
@@ -26,7 +26,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Ignore function. It returns the second argument.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.ignore(1).(2)
       2
   """
@@ -37,7 +37,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Return function. It returns the argument on the call.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.return(1).()
       1
   """
@@ -48,7 +48,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Composition function.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.compose(&String.to_integer/1, &Integer.to_string/1).(1)
       1
   """
@@ -58,7 +58,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Curry function.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.curry(&(&1 + &2)).(1).(2)
       3
       iex> FunFunc.Func.curry(&(&1 + &2 + &3)).(1).(2).(3)
@@ -79,7 +79,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Applys args to the curried function.
 
-  ## Example
+  ## Examples
       iex> f = fn a -> fn b -> fn c -> a + b + c end end end
       iex> FunFunc.Func.apply_args(f, [1, 2, 3])
       6
@@ -92,7 +92,7 @@ defmodule FunFunc.Func do
   @doc ~S"""
   Flip function.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Func.flip(&-/2).(1, 2)
       1
   """

@@ -7,6 +7,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Takes the first value in the tuple.
 
+  ## Examples
       iex> FunFunc.Tuple.fst({1, 2})
       1
       iex> FunFunc.Tuple.fst({1, 2, 3})
@@ -18,6 +19,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Takes the second value in the tuple.
 
+  ## Examples
       iex> FunFunc.Tuple.snd({1, 2})
       2
       iex> FunFunc.Tuple.snd({1, 2, 3})
@@ -29,6 +31,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Maps the first value in the tuple.
 
+  ## Examples
       iex> FunFunc.Tuple.map_fst({1, 2}, &Integer.to_string/1)
       {"1", 2}
       iex> FunFunc.Tuple.map_fst({1, 2, 3}, &Integer.to_string/1)
@@ -40,6 +43,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Maps the value in the tuple. The index is zero-index.
 
+  ## Examples
       iex> FunFunc.Tuple.map_snd({1, 2}, &Integer.to_string/1)
       {1, "2"}
       iex> FunFunc.Tuple.map_snd({1, 2, 3}, &Integer.to_string/1)
@@ -51,6 +55,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Maps the value in the tuple. The index is zero-index.
 
+  ## Examples
       iex> FunFunc.Tuple.map({1, 2}, 0, &Integer.to_string/1)
       {"1", 2}
       iex> FunFunc.Tuple.map({1, 2, 3}, 2, &Integer.to_string/1)
@@ -67,6 +72,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Swaps first two elements.
 
+  ## Examples
       iex> FunFunc.Tuple.swap({1, 2})
       {2, 1}
       iex> FunFunc.Tuple.swap({1, 2, 3})
@@ -80,6 +86,7 @@ defmodule FunFunc.Tuple do
   @doc ~S"""
   Swaps values in the tuple. The index is zero-index.
 
+  ## Examples
       iex> FunFunc.Tuple.swap({1, 2}, 0, 1)
       {2, 1}
       iex> FunFunc.Tuple.swap({1, 2, 3}, 1, 2)

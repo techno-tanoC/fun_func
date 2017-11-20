@@ -9,7 +9,7 @@ defmodule FunFunc.Nilable do
   @doc ~S"""
   Maps if the first argument is not nil. Otherwise returns nil.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.map(1, &Integer.to_string/1)
       "1"
       iex> FunFunc.Nilable.map(nil, &Integer.to_string/1)
@@ -23,7 +23,7 @@ defmodule FunFunc.Nilable do
   @doc ~S"""
   Gets the first argument if it is not nil. Otherwise returns the default value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.get_or(1, 2)
       1
       iex> FunFunc.Nilable.get_or(nil, 2)
@@ -37,7 +37,7 @@ defmodule FunFunc.Nilable do
   @doc ~S"""
   Gets the first argument if it is not nil. Otherwise returns the result of the function.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.get_or_else(1, fn -> 2 end)
       1
       iex> FunFunc.Nilable.get_or_else(nil, fn -> 2 end)
@@ -51,7 +51,7 @@ defmodule FunFunc.Nilable do
   @doc ~S"""
   Maps the first argument if it is not nil. Otherwise returns the default value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.maybe(1, &Integer.to_string/1, "default")
       "1"
       iex> FunFunc.Nilable.maybe(nil, &Integer.to_string/1, "default")
@@ -65,7 +65,7 @@ defmodule FunFunc.Nilable do
   @doc ~S"""
   Maps the first argument if it is not nil. Otherwise returns the result of the function.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.maybe_else(1, &Integer.to_string/1, fn -> "default" end)
       "1"
       iex> FunFunc.Nilable.maybe_else(nil, &Integer.to_string/1, fn -> "default" end)
@@ -81,7 +81,7 @@ defmodule FunFunc.Nilable do
 
   If the first argument is `nil`, `nil` is returned. Otherwise, the second argument is returned.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.nil_and(nil, 2)
       nil
       iex> FunFunc.Nilable.nil_and(1, nil)
@@ -99,7 +99,7 @@ defmodule FunFunc.Nilable do
 
   If the first argument is `nil`, the second argument is returned. Otherwise, the first argument is returnded.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Nilable.nil_or(nil, 2)
       2
       iex> FunFunc.Nilable.nil_or(1, nil)

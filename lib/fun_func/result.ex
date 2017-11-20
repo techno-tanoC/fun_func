@@ -10,7 +10,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Creates a ok value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.ok(1)
       {:ok, 1}
   """
@@ -20,7 +20,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Creates a error value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.error(1)
       {:error, 1}
   """
@@ -30,7 +30,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Checks the value is a ok value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.ok?({:ok, 1})
       true
       iex> FunFunc.Result.ok?({:error, 1})
@@ -46,7 +46,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Checks the value is a error value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.error?({:ok, 1})
       false
       iex> FunFunc.Result.error?({:error, 1})
@@ -62,7 +62,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Checks the value is the ok value or the error value.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.result?({:ok, 1})
       true
       iex> FunFunc.Result.result?({:error, 1})
@@ -139,7 +139,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Maps the inside value if the value is the ok value. Otherwise it returns the value itself.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.map({:ok, 1}, &Integer.to_string/1)
       {:ok, "1"}
       iex> FunFunc.Result.map({:error, 1}, &Integer.to_string/1)
@@ -156,7 +156,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Maps the inside value and flatten if the value is the ok value. Otherwise it returns the value itself.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.flat_map({:ok, 1}, &{:ok, &1 + 1})
       {:ok, 2}
       iex> FunFunc.Result.flat_map({:error, 1}, &{:ok, &1 + 1})
@@ -173,7 +173,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Maps the inside value if the value is the error value. Otherwise it returns the value itself.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.map_error({:ok, 1}, &Integer.to_string/1)
       {:ok, 1}
       iex> FunFunc.Result.map_error({:error, 1}, &Integer.to_string/1)
@@ -190,7 +190,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Maps the inside value and flatten if the value is the error value. Otherwise it returns the value itself.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.flat_map_error({:ok, 1}, &{:error, &1 + 1})
       {:ok, 1}
       iex> FunFunc.Result.flat_map_error({:error, 1}, &{:error, &1 + 1})
@@ -207,7 +207,7 @@ defmodule FunFunc.Result do
   @doc ~S"""
   If the value is ok, applys the first function. If the value is error, applys the second function. Otherwise returns itself.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Result.join({:ok, 1}, &Integer.to_string/1, &Atom.to_string/1)
       "1"
       iex> FunFunc.Result.join({:error, :atom}, &Integer.to_string/1, &Atom.to_string/1)

@@ -5,7 +5,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   It returns the itself when the value is present, or returns nil.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.presence(nil)
       nil
       iex> FunFunc.Value.presence(false)
@@ -26,7 +26,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   Checks the value is present.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.present?(nil)
       false
       iex> FunFunc.Value.present?(false)
@@ -55,7 +55,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   The opposite of `present?`.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.blank?(nil)
       true
       iex> FunFunc.Value.blank?(false)
@@ -75,7 +75,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   Checks the value is empty.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.empty?([])
       true
       iex> FunFunc.Value.empty?(%{})
@@ -98,7 +98,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   The opposite of `empty?`.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.non_empty?([])
       false
       iex> FunFunc.Value.non_empty?(%{})
@@ -114,7 +114,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   Returns `true` if not `false` nor `nil`.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.truthy?(1)
       true
       iex> FunFunc.Value.truthy?(false)
@@ -134,7 +134,7 @@ defmodule FunFunc.Value do
   @doc ~S"""
   The opposite of `truthy?/1`.
 
-  ## Example
+  ## Examples
       iex> FunFunc.Value.falsy?(1)
       false
       iex> FunFunc.Value.falsy?(false)
