@@ -81,12 +81,12 @@ defmodule FunFunc.Nilable do
   If the first argument is `nil`, `nil` is returned. Otherwise, the second argument is returned.
 
   ## Example
-  iex> FunFunc.Nilable.nil_and(nil, 2)
-  nil
-  iex> FunFunc.Nilable.nil_and(1, nil)
-  nil
-  iex> FunFunc.Nilable.nil_and(1, 2)
-  2
+      iex> FunFunc.Nilable.nil_and(nil, 2)
+      nil
+      iex> FunFunc.Nilable.nil_and(1, nil)
+      nil
+      iex> FunFunc.Nilable.nil_and(1, 2)
+      2
   """
   @spec nil_and(nilable, nilable) :: nilable
   def nil_and(x, y)
@@ -99,12 +99,12 @@ defmodule FunFunc.Nilable do
   If the first argument is `nil`, the second argument is returned. Otherwise, the first argument is returnded.
 
   ## Example
-  iex> FunFunc.Nilable.nil_or(nil, 2)
-  2
-  iex> FunFunc.Nilable.nil_or(1, nil)
-  1
-  iex> FunFunc.Nilable.nil_or(nil, nil)
-  nil
+      iex> FunFunc.Nilable.nil_or(nil, 2)
+      2
+      iex> FunFunc.Nilable.nil_or(1, nil)
+      1
+      iex> FunFunc.Nilable.nil_or(nil, nil)
+      nil
   """
   @spec nil_or(nilable, nilable) :: nilable
   def nil_or(x, y)
