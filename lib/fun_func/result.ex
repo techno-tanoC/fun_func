@@ -77,6 +77,7 @@ defmodule FunFunc.Result do
   def result?(_), do: false
 
   @doc ~S"""
+  Gets the value in the ok result, or gets the default value.
 
       iex> FunFunc.Result.ok_or({:ok, 1}, 2)
       1
@@ -91,6 +92,7 @@ defmodule FunFunc.Result do
   def ok_or(_, default), do: default
 
   @doc ~S"""
+  Gets the value in the ok result, or gets the result of the function.
 
       iex> FunFunc.Result.ok_or_else({:ok, 1}, fn -> 2 end)
       1
@@ -105,6 +107,7 @@ defmodule FunFunc.Result do
   def ok_or_else(_, default), do: default.()
 
   @doc ~S"""
+  Gets the value in the error result, or gets the default value.
 
       iex> FunFunc.Result.error_or({:ok, 1}, 2)
       2
@@ -119,6 +122,7 @@ defmodule FunFunc.Result do
   def error_or(_, default), do: default
 
   @doc ~S"""
+  Gets the value in the error result, or gets the result of the function.
 
       iex> FunFunc.Result.error_or_else({:ok, 1}, fn -> 2 end)
       2
