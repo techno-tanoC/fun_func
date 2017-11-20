@@ -208,12 +208,12 @@ defmodule FunFunc.Result do
   If the value is ok, applys the first function. If the value is error, applys the second function. Otherwise returns itself.
 
   ## Example
-  iex> FunFunc.Result.join({:ok, 1}, &Integer.to_string/1, &Atom.to_string/1)
-  "1"
-  iex> FunFunc.Result.join({:error, :atom}, &Integer.to_string/1, &Atom.to_string/1)
-  "atom"
-  iex> FunFunc.Result.join(1, &Integer.to_string/1, &Atom.to_string/1)
-  1
+      iex> FunFunc.Result.join({:ok, 1}, &Integer.to_string/1, &Atom.to_string/1)
+      "1"
+      iex> FunFunc.Result.join({:error, :atom}, &Integer.to_string/1, &Atom.to_string/1)
+      "atom"
+      iex> FunFunc.Result.join(1, &Integer.to_string/1, &Atom.to_string/1)
+      1
   """
   @spec join(result, fun, fun) :: any
   def join(result, f, g)
@@ -224,8 +224,8 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Collects only ok value.
 
-  iex> FunFunc.Result.collect_oks([{:ok, 1}, {:error, 2}, 3])
-  [1]
+      iex> FunFunc.Result.collect_oks([{:ok, 1}, {:error, 2}, 3])
+      [1]
   """
   @spec collect_oks(results) :: list
   def collect_oks(results) do
@@ -237,8 +237,8 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Collects only error value.
 
-  iex> FunFunc.Result.collect_errors([{:ok, 1}, {:error, 2}, 3])
-  [2]
+      iex> FunFunc.Result.collect_errors([{:ok, 1}, {:error, 2}, 3])
+      [2]
   """
   @spec collect_errors(results) :: list
   def collect_errors(results) do
@@ -250,8 +250,8 @@ defmodule FunFunc.Result do
   @doc ~S"""
   Splits the result list. Non result value is ignored.
 
-  iex> FunFunc.Result.split([{:ok, 1}, {:error, 2}, 3])
-  {[1], [2]}
+      iex> FunFunc.Result.split([{:ok, 1}, {:error, 2}, 3])
+      {[1], [2]}
   """
   @spec split(results) :: {list, list}
   def split(results) do
