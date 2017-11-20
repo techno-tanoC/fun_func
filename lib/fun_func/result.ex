@@ -77,6 +77,62 @@ defmodule FunFunc.Result do
   def result?(_), do: false
 
   @doc ~S"""
+
+      iex> FunFunc.Result.ok_or({:ok, 1}, 2)
+      1
+      iex> FunFunc.Result.ok_or({:error, 1}, 2)
+      2
+      iex> FunFunc.Result.ok_or(1, 2)
+      2
+  """
+  @spec ok_or(any, any) :: any
+  def ok_or(result, default)
+  def ok_or({:ok, x}, _), do: x
+  def ok_or(_, default), do: default
+
+  @doc ~S"""
+
+      iex> FunFunc.Result.ok_or_else({:ok, 1}, fn -> 2 end)
+      1
+      iex> FunFunc.Result.ok_or_else({:error, 1}, fn -> 2 end)
+      2
+      iex> FunFunc.Result.ok_or_else(1, fn -> 2 end)
+      2
+  """
+  @spec ok_or_else(any, fun) :: any
+  def ok_or_else(result, default)
+  def ok_or_else({:ok, x}, _), do: x
+  def ok_or_else(_, default), do: default.()
+
+  @doc ~S"""
+
+      iex> FunFunc.Result.error_or({:ok, 1}, 2)
+      2
+      iex> FunFunc.Result.error_or({:error, 1}, 2)
+      1
+      iex> FunFunc.Result.error_or(1, 2)
+      2
+  """
+  @spec error_or(any, any) :: any
+  def error_or(result, default)
+  def error_or({:error, x}, _), do: x
+  def error_or(_, default), do: default
+
+  @doc ~S"""
+
+      iex> FunFunc.Result.error_or_else({:ok, 1}, fn -> 2 end)
+      2
+      iex> FunFunc.Result.error_or_else({:error, 1}, fn -> 2 end)
+      1
+      iex> FunFunc.Result.error_or_else(1, fn -> 2 end)
+      2
+  """
+  @spec error_or_else(any, fun) :: any
+  def error_or_else(result, default)
+  def error_or_else({:error, x}, _), do: x
+  def error_or_else(_, default), do: default.()
+
+  @doc ~S"""
   Maps the inside value if the value is the ok value. Otherwise it returns the value itself.
 
   ## Example
