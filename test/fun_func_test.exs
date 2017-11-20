@@ -5,4 +5,5 @@ defmodule FunFuncTest do
   doctest FunFunc.Func
   doctest FunFunc.Result
   doctest FunFunc.Tuple
+  doctest FunFunc.Num
 end
