@@ -7,4 +7,5 @@ defmodule FunFuncTest do
   doctest FunFunc.Tuple
   doctest FunFunc.Num
   doctest FunFunc.Nilable
+  doctest FunFunc.Value
 end
