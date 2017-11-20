@@ -1,5 +1,6 @@
 defmodule FunFunc do
   @moduledoc ~S"""
+  This library provides helper functions.
 
   ## Sample
 
@@ -10,11 +11,13 @@ defmodule FunFunc do
   Agent.get(__MODULE__, id())
   ```
 
-  when `use FunFunc`, It means:
+  ## `use`
+
+  When `use FunFunc`, it means:
 
   ```
   import FunFunc
-  alias FunFunc.{Func, Result}
+  alias FunFunc.{Func, Nilable, Num, Result, Tuple, Value}
   ```
   """
 
@@ -57,7 +60,7 @@ defmodule FunFunc do
   defmacro __using(_opts) do
     quote do
       import FunFunc
-      alias FunFunc.{Func, Result}
+      alias FunFunc.{Func, Nilable, Num, Result, Tuple, Value}
     end
   end
 end
