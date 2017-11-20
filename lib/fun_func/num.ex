@@ -86,4 +86,20 @@ defmodule FunFunc.Num do
   """
   @spec pred(number) :: number
   def pred(x), do: x - 1
+
+  @doc ~S"""
+  Iterates function for x times.
+
+  ## Sample
+
+  ```
+  FunFunc.Num.times(3, &IO.puts/1)
+  #=> 1
+  #=> 2
+  #=> 3
+  :ok
+  ```
+  """
+  @spec times(integer, fun) :: atom
+  def times(x, f), do: 1..x |> Enum.each(f)
 end
