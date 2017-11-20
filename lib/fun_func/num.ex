@@ -74,7 +74,7 @@ defmodule FunFunc.Num do
       iex> FunFunc.Num.succ(41)
       42
   """
-  @spec succ(number) :: number
+  @spec succ(integer) :: integer
   def succ(x), do: x + 1
 
   @doc ~S"""
@@ -84,7 +84,7 @@ defmodule FunFunc.Num do
       iex> FunFunc.Num.pred(43)
       42
   """
-  @spec pred(number) :: number
+  @spec pred(integer) :: integer
   def pred(x), do: x - 1
 
   @doc ~S"""
