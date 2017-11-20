@@ -1,5 +1,6 @@
 defmodule FunFunc.Tuple do
   @moduledoc ~S"""
+  Functions for Tuple.
   These functions accept a arbitaly length tuple.
   """
 

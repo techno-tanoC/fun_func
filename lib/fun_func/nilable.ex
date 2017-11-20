@@ -1,5 +1,6 @@
 defmodule FunFunc.Nilable do
   @moduledoc ~S"""
+  Functions for Nilable valeu.
   """
 
   @type nilable :: nil | any

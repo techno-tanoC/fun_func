@@ -1,5 +1,6 @@
 defmodule FunFunc.Num do
   @moduledoc ~S"""
+  Functions for Number.
   """
 
   @doc ~S"""

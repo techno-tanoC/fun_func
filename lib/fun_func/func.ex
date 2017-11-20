@@ -1,5 +1,6 @@
 defmodule FunFunc.Func do
   @moduledoc ~S"""
+  Functions for generic purpose.
   """
 
   @doc ~S"""
