@@ -1,4 +1,11 @@
 defmodule FunFunc.Unit do
+  @moduledoc ~S"""
+  Functions for units.
+
+  `kilo`, `mega`, `giga`, `tera`, `peta`, `exa`, `milli`,
+  `milli`, `micro`, `nano`, `pico`, `femto`, `atto` are supported.
+  """
+
   define_unit = fn {unit, number} ->
     @doc ~s"""
     1 #{unit} is `#{number}`.
