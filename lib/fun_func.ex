@@ -28,6 +28,7 @@ defmodule FunFunc do
       iex> FunFunc.id().(1)
       1
   """
+  @spec id() :: fun
   defdelegate id, to: FunFunc.Func, as: :id
 
   @doc ~S"""
@@ -37,6 +38,7 @@ defmodule FunFunc do
       iex> FunFunc.const(1).(2)
       1
   """
+  @spec const(any) :: fun
   defdelegate const(x), to: FunFunc.Func, as: :const
 
   @doc ~S"""
@@ -46,6 +48,7 @@ defmodule FunFunc do
       iex> FunFunc.ignore(1).(2)
       2
   """
+  @spec ignore(any) :: fun
   defdelegate ignore(x), to: FunFunc.Func, as: :ignore
 
   @doc ~S"""
@@ -55,6 +58,7 @@ defmodule FunFunc do
       iex> FunFunc.return(1).()
       1
   """
+  @spec return(any) :: fun
   defdelegate return(x), to: FunFunc.Func, as: :return
 
   defmacro __using(_opts) do
