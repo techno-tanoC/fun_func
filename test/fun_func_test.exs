@@ -8,4 +8,5 @@ defmodule FunFuncTest do
   doctest FunFunc.Num
   doctest FunFunc.Nilable
   doctest FunFunc.Value
+  doctest FunFunc.Unit
 end

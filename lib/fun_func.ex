@@ -17,7 +17,7 @@ defmodule FunFunc do
 
   ```
   import FunFunc
-  alias FunFunc.{Func, Nilable, Num, Result, Tuple, Value}
+  alias FunFunc.{Func, Nilable, Num, Result, Tuple, Unit, Value}
   ```
   """
 
@@ -60,7 +60,7 @@ defmodule FunFunc do
   defmacro __using(_opts) do
     quote do
       import FunFunc
-      alias FunFunc.{Func, Nilable, Num, Result, Tuple, Value}
+      alias FunFunc.{Func, Nilable, Num, Result, Tuple, Unit, Value}
     end
   end
 end
