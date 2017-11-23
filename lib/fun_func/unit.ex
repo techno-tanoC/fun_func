@@ -2,7 +2,7 @@ defmodule FunFunc.Unit do
   @moduledoc ~S"""
   Functions for units.
 
-  `kilo`, `mega`, `giga`, `tera`, `peta`, `exa`, `milli`,
+  `kilo`, `mega`, `giga`, `tera`, `peta`, `exa`,
   `milli`, `micro`, `nano`, `pico`, `femto`, `atto` are supported.
   """
 
