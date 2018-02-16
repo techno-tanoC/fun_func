@@ -17,7 +17,7 @@ defmodule FunFunc do
 
   ```
   import FunFunc
-  alias FunFunc.{Func, Nilable, Num, Result, Tuple, Unit, Value}
+  alias FunFunc.{Func, Nilable, Num, Result, Tuple, Unit, Value, Str}
   ```
   """
 
