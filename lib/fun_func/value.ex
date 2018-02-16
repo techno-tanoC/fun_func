@@ -145,10 +145,6 @@ defmodule FunFunc.Value do
   """
   @spec falsy?(any) :: boolean
   def falsy?(x) do
-    if x do
-      false
-    else
-      true
-    end
+    !truthy?(x)
   end
 end
