@@ -3,11 +3,11 @@ defmodule FunFuncTest do
 
   doctest FunFunc
   doctest FunFunc.Func
-  doctest FunFunc.Result
-  doctest FunFunc.Tuple
-  doctest FunFunc.Num
   doctest FunFunc.Nilable
-  doctest FunFunc.Value
-  doctest FunFunc.Unit
+  doctest FunFunc.Num
+  doctest FunFunc.Result
   doctest FunFunc.Str
+  doctest FunFunc.Tuple
+  doctest FunFunc.Unit
+  doctest FunFunc.Value
 end
