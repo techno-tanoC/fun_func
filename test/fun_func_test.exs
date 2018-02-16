@@ -9,4 +9,5 @@ defmodule FunFuncTest do
   doctest FunFunc.Nilable
   doctest FunFunc.Value
   doctest FunFunc.Unit
+  doctest FunFunc.Str
 end
