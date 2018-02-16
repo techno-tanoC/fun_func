@@ -17,6 +17,8 @@ defmodule FunFunc.Value do
       nil
       iex> FunFunc.Value.presence([])
       nil
+      iex> FunFunc.Value.presence({})
+      nil
       iex> FunFunc.Value.presence(1)
       1
   """
@@ -38,6 +40,8 @@ defmodule FunFunc.Value do
       false
       iex> FunFunc.Value.present?([])
       false
+      iex> FunFunc.Value.present?({})
+      false
       iex> FunFunc.Value.present?(1)
       true
   """
@@ -46,9 +50,10 @@ defmodule FunFunc.Value do
     case x do
       nil   -> false
       false -> false
-      []    -> false
-      %{}   -> not Enum.empty?(x)
       ""    -> false
+      %{}   -> not Enum.empty?(x)
+      []    -> false
+      {}    -> false
       _     -> true
     end
   end
@@ -92,6 +97,7 @@ defmodule FunFunc.Value do
       []  -> true
       %{} -> Enum.empty?(x)
       ""  -> true
+      {}  -> true
       _   -> false
     end
   end
