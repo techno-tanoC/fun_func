@@ -61,7 +61,7 @@ defmodule FunFunc do
   @spec return(any) :: fun
   defdelegate return(x), to: FunFunc.Func, as: :return
 
-  defmacro __using(_opts) do
+  defmacro __using__(_opts) do
     quote do
       import FunFunc
       alias FunFunc.{Func, Nilable, Num, Result, Tuple, Unit, Value, Str}
