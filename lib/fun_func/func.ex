@@ -98,4 +98,20 @@ defmodule FunFunc.Func do
   """
   @spec flip(fun) :: fun
   def flip(f), do: fn a, b -> f.(b, a) end
+
+  @doc ~S"""
+  Applys the list to the function.
+
+  ## Examples
+      iex> f = fn a -> a + 1 end
+      iex> [1] |> FunFunc.Func.apply_list(f)
+      2
+      iex> f = fn a, b -> a + b end
+      iex> [1, 2] |> FunFunc.Func.apply_list(f)
+      3
+      iex> f = fn a, b, c -> a + b + c end
+      iex> [1, 2, 3] |> FunFunc.Func.apply_list(f)
+      6
+  """
+  def apply_list(list, f), do: apply_args(curry(f), list)
 end
