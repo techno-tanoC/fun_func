@@ -13,6 +13,8 @@ defmodule FunFunc.Value do
       nil
       iex> FunFunc.Value.presence("")
       nil
+      iex> FunFunc.Value.presence("     ")
+      nil
       iex> FunFunc.Value.presence(%{})
       nil
       iex> FunFunc.Value.presence([])
@@ -36,6 +38,8 @@ defmodule FunFunc.Value do
       false
       iex> FunFunc.Value.present?("")
       false
+      iex> FunFunc.Value.present?("     ")
+      false
       iex> FunFunc.Value.present?(%{})
       false
       iex> FunFunc.Value.present?([])
@@ -54,8 +58,39 @@ defmodule FunFunc.Value do
       %{}   -> not Enum.empty?(x)
       []    -> false
       {}    -> false
-      _     -> true
+      x     -> cond do
+        is_binary(x) -> String.trim(x) != ""
+        true -> true
+      end
     end
+  end
+
+  @doc ~S"""
+  Returns the default value if it is present value.
+
+  ## Examples
+      iex> FunFunc.Value.present_or(1, 2)
+      2
+      iex> FunFunc.Value.present_or(nil, 1)
+      nil
+  """
+  @spec present_or(any, any) :: any
+  def present_or(x, default) do
+    if present?(x), do: default, else: x
+  end
+
+  @doc ~S"""
+  Lazy version of `present_or`.
+
+  ## Examples
+      iex> FunFunc.Value.present_or_else(1, fn -> 2 end)
+      2
+      iex> FunFunc.Value.present_or_else(nil, fn -> 1 end)
+      nil
+  """
+  @spec present_or_else(any, (() -> any)) :: any
+  def present_or_else(x, f) do
+    if present?(x), do: f.(), else: x
   end
 
   @doc ~S"""
@@ -68,6 +103,8 @@ defmodule FunFunc.Value do
       true
       iex> FunFunc.Value.blank?("")
       true
+      iex> FunFunc.Value.blank?("     ")
+      true
       iex> FunFunc.Value.blank?(%{})
       true
       iex> FunFunc.Value.blank?([])
@@ -77,6 +114,34 @@ defmodule FunFunc.Value do
   """
   @spec blank?(any) :: boolean
   def blank?(x), do: !present?(x)
+
+  @doc ~S"""
+  Returns the default value if it is blank value.
+
+  ## Examples
+      iex> FunFunc.Value.blank_or(1, 2)
+      1
+      iex> FunFunc.Value.blank_or(nil, 2)
+      2
+  """
+  @spec blank_or(any, any) :: any
+  def blank_or(x, default) do
+    if blank?(x), do: default, else: x
+  end
+
+  @doc ~S"""
+  Lazy version of `blank_or`.
+
+  ## Examples
+      iex> FunFunc.Value.blank_or_else(1, fn -> 2 end)
+      1
+      iex> FunFunc.Value.blank_or_else(nil, fn -> 2 end)
+      2
+  """
+  @spec blank_or_else(any, (() -> any)) :: any
+  def blank_or_else(x, f) do
+    if blank?(x), do: f.(), else: x
+  end
 
   @doc ~S"""
   Checks the value is empty.
@@ -103,6 +168,34 @@ defmodule FunFunc.Value do
   end
 
   @doc ~S"""
+  Returns the default value if it is empty value.
+
+  ## Examples
+      iex> FunFunc.Value.empty_or(1, 2)
+      1
+      iex> FunFunc.Value.empty_or([], 2)
+      2
+  """
+  @spec empty_or(any, any) :: any
+  def empty_or(x, default) do
+    if empty?(x), do: default, else: x
+  end
+
+  @doc ~S"""
+  Lazy version of `empty_or`.
+
+  ## Examples
+      iex> FunFunc.Value.empty_or_else(1, fn -> 2 end)
+      1
+      iex> FunFunc.Value.empty_or_else([], fn -> 2 end)
+      2
+  """
+  @spec empty_or_else(any, (() -> any)) :: any
+  def empty_or_else(x, f) do
+    if empty?(x), do: f.(), else: x
+  end
+
+  @doc ~S"""
   The opposite of `empty?`.
 
   ## Examples
@@ -117,6 +210,34 @@ defmodule FunFunc.Value do
   """
   @spec non_empty?(any) :: boolean
   def non_empty?(x), do: !empty?(x)
+
+  @doc ~S"""
+  Returns the default value if it is not empty value.
+
+  ## Examples
+      iex> FunFunc.Value.non_empty_or(1, 2)
+      2
+      iex> FunFunc.Value.non_empty_or([], 2)
+      []
+  """
+  @spec non_empty_or(any, any) :: any
+  def non_empty_or(x, default) do
+    if non_empty?(x), do: default, else: x
+  end
+
+  @doc ~S"""
+  Lazy version of `non_empty_or`.
+
+  ## Examples
+      iex> FunFunc.Value.non_empty_or_else(1, fn -> 2 end)
+      2
+      iex> FunFunc.Value.non_empty_or_else([], fn -> 2 end)
+      []
+  """
+  @spec non_empty_or_else(any, (() -> any)) :: any
+  def non_empty_or_else(x, f) do
+    if non_empty?(x), do: f.(), else: x
+  end
 
   @doc ~S"""
   Returns `true` if not `false` nor `nil`.
