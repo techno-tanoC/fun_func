@@ -35,7 +35,7 @@ defmodule FunFunc.Mixfile do
 
   defp deps do
     [
-      {:ex_doc, "~> 0.14", only: :dev},
+      {:ex_doc, "~> 0.18", only: :dev},
     ]
   end
 end
